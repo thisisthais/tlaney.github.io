@@ -1,0 +1,18 @@
+body {
+  background-color: #ff0000;
+}
+
+p {
+  color: red;
+}
+
+.box {
+  height: 40em;
+  width: max-width;
+  background: #243e42;
+}
+
+.container {
+  background: #82a43a;
+  padding: 1em;
+}

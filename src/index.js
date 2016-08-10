@@ -1,15 +1,25 @@
-import React from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
+import Terminal from './components/terminal';
 
-import App from './components/app';
-import reducers from './reducers';
+// Create a new component. This component should produce
+// some HTML.
+class App extends Component {
+  constructor(props) {
+    super(props);
 
-const createStoreWithMiddleware = applyMiddleware()(createStore);
+    this.state = { videos: [] };
+  }
 
-ReactDOM.render(
-  <Provider store={createStoreWithMiddleware(reducers)}>
-    <App />
-  </Provider>
-  , document.querySelector('.container'));
+  render() {
+    return (
+      <div>
+        <Terminal />
+      </div>
+    );
+  }
+}
+
+// Take this component's generated HTML and put it
+// on the page (in the DOM).
+ReactDOM.render(<App />, document.querySelector('.container'));
