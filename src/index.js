@@ -33,9 +33,11 @@ class Terminal extends Component {
         'ls'    : this.listFiles,
         'intro' : this.showWelcomeMsg,
         'help'  : this.showHelp,
+        'hint'  : this.openLink('https://github.com/tlaney/HackerHunt/blob/master/src/index.js'),
         'source': this.openLink('https://github.com/tlaney/HackerHunt/blob/master/src/index.js'),
       }
     });
+    console.log("registered");
   }
 
   listFiles() {
@@ -110,7 +112,8 @@ class Terminal extends Component {
           <input
             type='text'
             onKeyPress={this.handleInput.bind(this)}
-            ref='term'/>
+            ref='term'
+            autofocus />
         </p>
       </div>
     )

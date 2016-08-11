@@ -33,6 +33,7 @@ input[type=text], input[type=text]:focus {
   background: #2b303b;
   color: #ebcb8b;
   width: 50%;
+  outline: none;
 }
 p {
   margin-bottom: 0;
@@ -47,8 +48,4 @@ p {
 #content {
   padding: 20px;
   height: 100%;
-}
-
-*:focus {
-    outline: none;
 }
