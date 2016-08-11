@@ -10,6 +10,8 @@ class Terminal extends Component {
       history: [],
       prompt: '$ '
     };
+
+    this.showHelp = this.showHelp.bind(this);
   }
 
   componentDidMount() {
@@ -91,9 +93,7 @@ class Terminal extends Component {
   }
 
   clearInput() {
-    this.setState({
-      term: ""
-    });
+    ReactDOM.findDOMNode(this.refs.term).value = "";
   }
 
   addHistory(output) {
@@ -109,17 +109,15 @@ class Terminal extends Component {
         return <p key={i}>{op}</p>
     });
     return (
-      <div className='box'>
-        <div className='input-area' onClick={this.handleClick.bind(this)}>
-          {output}
-          <p>
-            <span className="prompt">{this.state.prompt}</span>
-            <input
-              type='text'
-              onKeyPress={this.handleInput.bind(this)}
-              ref='term'/>
-          </p>
-        </div>
+      <div className='input-area' onClick={this.handleClick.bind(this)}>
+        {output}
+        <p>
+          <span className="prompt">{this.state.prompt}</span>
+          <input
+            type='text'
+            onKeyPress={this.handleInput.bind(this)}
+            ref='term'/>
+        </p>
       </div>
     )
   }
