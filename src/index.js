@@ -12,6 +12,7 @@ class Terminal extends Component {
     };
 
     this.showHelp = this.showHelp.bind(this);
+    this.showIntro = this.showIntro.bind(this);
   }
 
   componentDidMount() {
@@ -29,11 +30,9 @@ class Terminal extends Component {
   registerCommands() {
     this.setState({
       commands: {
-        'clear' : this.clearHistory,
-        'ls'    : this.listFiles,
-        'intro' : this.showWelcomeMsg,
+        'intro' : this.showIntro,
         'help'  : this.showHelp,
-        'hint'  : this.openLink('https://github.com/tlaney/HackerHunt/blob/master/src/index.js'),
+        'hint'  : this.openLink('https://github.com/tlaney/HackerHunt/blob/master/test/style_tester'),
         'source': this.openLink('https://github.com/tlaney/HackerHunt/blob/master/src/index.js'),
       }
     });
@@ -50,6 +49,10 @@ class Terminal extends Component {
       }
   }
 
+  showIntro() {
+    this.addHistory("You must retrieve all 4 passkeys to hack into E-Corp's mainframe");
+  }
+
   showWelcomeMsg() {
     this.addHistory("Last login: Sat Aug 14 08:14:93 on ttys000");
     this.addHistory("Type `help` to see what all commands are available");
@@ -59,8 +62,6 @@ class Terminal extends Component {
     this.addHistory("help - this help text");
     this.addHistory("source - browse the code for this page");
     this.addHistory("intro - print intro message");
-    this.addHistory("clear - clear screen");
-    this.addHistory("ls - list files");
     this.addHistory("hint - get a password hint");
   }
 
@@ -120,6 +121,7 @@ class Terminal extends Component {
   }
 }
 
+// first passkey location: Princess
 
 // Take this component's generated HTML and put it
 // on the page (in the DOM).
