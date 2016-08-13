@@ -23,6 +23,12 @@ class Terminal extends Component {
     term.focus();
   }
 
+  componentDidUpdate() {
+    var el = ReactDOM.findDOMNode(this);
+    var container = document.getElementById("main");
+    container.scrollTop = el.scrollHeight;
+  }
+
   clearHistory() {
     this.setState({ history: [] });
   }
@@ -87,6 +93,7 @@ class Terminal extends Component {
         }
         this.clearInput();
     }
+    this.handleClick();
   }
 
   clearInput() {
