@@ -13,6 +13,7 @@ class Terminal extends Component {
 
     this.showHelp = this.showHelp.bind(this);
     this.showIntro = this.showIntro.bind(this);
+    this.tryPasskey = this.tryPasskey.bind(this);
   }
 
   componentDidMount() {
@@ -36,10 +37,11 @@ class Terminal extends Component {
   registerCommands() {
     this.setState({
       commands: {
-        'intro' : this.showIntro,
-        'help'  : this.showHelp,
-        'hint'  : this.openLink('https://github.com/tlaney/HackerHunt/blob/master/test/style_tester'),
-        'source': this.openLink('https://github.com/tlaney/HackerHunt/blob/master/src/index.js'),
+        'intro'  : this.showIntro,
+        'help'   : this.showHelp,
+        'hint'   : this.openLink('https://github.com/tlaney/HackerHunt/blob/master/test/style_tester'),
+        'source' : this.openLink('https://github.com/tlaney/HackerHunt/blob/master/src/index.js'),
+        'passkey': this.tryPasskey,
       }
     });
     console.log("registered");
@@ -56,7 +58,9 @@ class Terminal extends Component {
   }
 
   showIntro() {
-    this.addHistory("You must retrieve all 4 passkeys to hack into E-Corp's mainframe");
+    this.addHistory("You must retrieve all 4 passkeys to hack into E-Corp's mainframe.");
+    this.addHistory("To attempt a passkey, type 'passkey ' + your attempt.");
+    this.addHistory("You can fail a passkey only 3 times.");
   }
 
   showWelcomeMsg() {
@@ -69,6 +73,7 @@ class Terminal extends Component {
     this.addHistory("source - browse the code for this page");
     this.addHistory("intro - print intro message");
     this.addHistory("hint - get a password hint");
+    this.addHistory("passkey [input] - attempt a passkey");
   }
 
   handleClick() {
@@ -93,7 +98,24 @@ class Terminal extends Component {
         }
         this.clearInput();
     }
-    this.handleClick();
+  }
+
+  tryPasskey(input) {
+    if (input === 'pr1nc355.py') {
+      this.addHistory("Valid passkey");
+      this.openLink('https://github.com/tlaney/HackerHunt/blob/master/test/frame_tester');
+    } else if (input === 'k1llA77bugs.jar') {
+      this.addHistory("Valid passkey");
+      this.openLink('https://github.com/tlaney/HackerHunt/blob/master/test/bug_tester');
+    } else if (input === 'gR177.apk') {
+      this.addHistory("Valid passkey");
+      this.openLink('https://github.com/tlaney/HackerHunt/blob/master/test/script_tester');
+    } else if (input === 'l3a0z1nh0.exe') {
+      this.addHistory("Valid passkey");
+      this.openLink('https://github.com/tlaney/HackerHunt/blob/master/test/script_tester');
+    } else {
+      this.addHistory("Invalid passkey");
+    }
   }
 
   clearInput() {
