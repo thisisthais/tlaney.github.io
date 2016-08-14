@@ -112,7 +112,7 @@ class Terminal extends Component {
       this.openLink('https://github.com/tlaney/HackerHunt/blob/master/test/script_tester');
     } else if (input === 'l3a0z1nh0.exe') {
       this.addHistory("Valid passkey");
-      this.openLink('https://github.com/tlaney/HackerHunt/blob/master/test/script_tester');
+      this.openLink('https://github.com/tlaney/HackerHunt/blob/master/test/bug_tester');
     } else {
       this.addHistory("Invalid passkey");
     }
