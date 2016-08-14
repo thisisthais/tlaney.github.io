@@ -14,6 +14,7 @@ class Terminal extends Component {
     this.showHelp = this.showHelp.bind(this);
     this.showIntro = this.showIntro.bind(this);
     this.tryPasskey = this.tryPasskey.bind(this);
+    this.openLink = this.openLink.bind(this);
   }
 
   componentDidMount() {
@@ -44,7 +45,6 @@ class Terminal extends Component {
         'passkey': this.tryPasskey,
       }
     });
-    console.log("registered");
   }
 
   listFiles() {
@@ -52,9 +52,9 @@ class Terminal extends Component {
   }
 
   openLink(link) {
-      return function() {
-        window.open(link, '_blank');
-      }
+    return function() {
+      window.open(link, '_blank');
+    }
   }
 
   showIntro() {
@@ -102,17 +102,17 @@ class Terminal extends Component {
 
   tryPasskey(input) {
     if (input === 'pr1nc355.py') {
+      window.open('https://github.com/tlaney/HackerHunt/blob/master/test/frame_tester', '_blank');
       this.addHistory("Valid passkey");
-      this.openLink('https://github.com/tlaney/HackerHunt/blob/master/test/frame_tester');
     } else if (input === 'k1llA77bugs.jar') {
+      window.open('https://github.com/tlaney/HackerHunt/blob/master/test/bug_tester', '_blank');
       this.addHistory("Valid passkey");
-      this.openLink('https://github.com/tlaney/HackerHunt/blob/master/test/bug_tester');
     } else if (input === 'gR177.apk') {
+      window.open('https://github.com/tlaney/HackerHunt/blob/master/test/script_tester', '_blank');
       this.addHistory("Valid passkey");
-      this.openLink('https://github.com/tlaney/HackerHunt/blob/master/test/script_tester');
     } else if (input === 'l3a0z1nh0.exe') {
+      window.open('https://github.com/tlaney/HackerHunt/blob/master/test/test_tester', '_blank');
       this.addHistory("Valid passkey");
-      this.openLink('https://github.com/tlaney/HackerHunt/blob/master/test/bug_tester');
     } else {
       this.addHistory("Invalid passkey");
     }
